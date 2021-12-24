@@ -29,7 +29,7 @@ M.setup = function()
       border = "rounded",
       source = "always",
       header = "",
-      prefix = "",
+	  prefix = "",
     },
   }
 
@@ -82,6 +82,7 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  vim.api.nvim_exec( [[ autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 100) ]], false)
 end
 
 M.on_attach = function(client, bufnr)
