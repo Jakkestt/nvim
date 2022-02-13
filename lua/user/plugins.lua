@@ -60,7 +60,7 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim")
 
 	-- Colorschemes
-	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+	use("lunarvim/colorschemes") -- A bunch of colorschemes you can try out
 	use("lunarvim/darkplus.nvim")
 
 	-- cmp plugins
@@ -93,6 +93,9 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
+
+	-- Prettier
+	use("MunifTanjim/prettier.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
