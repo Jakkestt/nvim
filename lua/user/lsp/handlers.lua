@@ -77,9 +77,9 @@ local function lsp_keymaps(client, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 	--vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
-      vim.cmd("nnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.formatting()<CR>")
-      -- format on save
-      vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
+	vim.cmd("nnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.formatting()<CR>")
+	-- format on save
+	vim.api.nvim_exec([[ autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 100) ]], false)
 end
 
 M.on_attach = function(client, bufnr)
